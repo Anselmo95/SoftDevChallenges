@@ -6,4 +6,5 @@ Three topics are treated:
 * Shell scripting
 * Python scripting
 * Developement/Makefiles
+
 For each argument there are three challenges with an increasing amount in difficulty
