@@ -1,0 +1,21 @@
+pictures = $(wildcard pictures/*.jpg) 
+thumbs = $(subst pictures,thumbs, $(pictures))
+
+all : $(thumbs)
+
+# Apperently this statemnt doesn't work because we are saying
+# all file in thumbs/ depend on all file in pictures/ (speaking 
+# of .jpg files) and it throws an error as in all we are 
+# looking for a rule with the name of a single file and not
+# all together. It seems that the % sign is used fo this
+# exact pourpose and define a one to one correspondance in #
+# the rules
+
+#thumbs/*.jpg: pictures/*.jpg
+thumbs/%.jpg: pictures/%.jpg
+# just to be sure that the folder exists
+	-@mkdir -p thumbs
+	convert -thumbnail 100 $< $@
+
+clean:
+	-@rm -f thumbs/*
